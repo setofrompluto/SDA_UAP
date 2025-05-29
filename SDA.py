@@ -8,7 +8,7 @@ class AplikasiTkinter:
         self.root.title("Aplikasi Tkinter Sederhana")
         self.root.geometry("500x500")
         self.root.resizable(False, False)
-        self.label_judul = tk.Label(root, text="Selamat Datang di Aplikasi Tkinter", font=("Helvetica", 16))
+        self.label_judul = tk.Label(root, text="Testing How This Work", font=("Helvetica", 16))
         self.label_judul.pack(pady=10)
 
 
