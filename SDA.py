@@ -8,6 +8,29 @@ class AplikasiTkinter:
         self.root.title("Aplikasi Tkinter Sederhana")
         self.root.geometry("500x500")
         self.root.resizable(False, False)
+        
+        self.frame_awal = tk.Frame(root, bg="white")
+        self.frame_awal.pack(fill="both", expand=True)
+        
+        self.label_nama = tk.Label(self.frame_awal, text="Selamat Datang!",font=("Helvetica", 18), bg="white")
+        self.label_nama.pack(pady=50)
+
+        self.btn_masuk = tk.Button(self.frame_awal, text="Masuk", font=("Helvetica", 14), command=self.buka_halaman_utama)
+        self.btn_masuk.pack()
+
+        self.frame_utama = tk.Frame(root)
+    
+    def buka_halaman_utama(self):
+        self.frame_awal.pack_forget()
+        self.tampilkan_halaman_utama()
+
+    def tampilkan_halaman_utama(self):
+        self.frame_kiri = tk.Frame(root, width=250, height=500)
+        self.frame_kiri.pack(side="left", fill="both", expand=False)
+
+        self.frame_kanan = tk.Frame(root, bg="white", width=500, height=500)
+        self.frame_kanan.pack(side="right", fill="both", expand=True)
+        
         self.label_judul = tk.Label(root, text="Testing How This Work", font=("Helvetica", 16))
         self.label_judul.pack(pady=10)
 
