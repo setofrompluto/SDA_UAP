@@ -34,15 +34,16 @@ class AplikasiTkinter:
         self.label_judul = tk.Label(root, text="Testing How This Work", font=("Helvetica", 16))
         self.label_judul.pack(pady=10)
 
+        def tampilkan_gambar(self):
+        img = Image.open("Test.img")
+        img = img.resize((200, 200))
+        self.photo = ImageTk.PhotoImage(img)
+        self.label_gambar = tk.Label(self.root, image=self.photo)
+        self.label_gambar.pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = AplikasiTkinter(root)
     root.mainloop()
 
-    def tampilkan_gambar(self):
-        img = Image.open("sehun.png")
-        img = img.resize((200, 200))
-        self.photo = ImageTk.PhotoImage(img)
-        self.label_gambar = tk.Label(self.root, image=self.photo)
-        self.label_gambar.pack(pady=10)
+    
