@@ -6,7 +6,7 @@ class AplikasiTkinter:
     def __init__(self, root):
         self.root = root
         self.root.title("Aplikasi Tkinter Sederhana")
-        self.root.geometry("500x500")
+        self.root.geometry("700x400")
         self.root.resizable(False, False)
         
         self.frame_awal = tk.Frame(root, bg="white")
@@ -25,17 +25,17 @@ class AplikasiTkinter:
         self.tampilkan_halaman_utama()
 
     def tampilkan_halaman_utama(self):
-        self.frame_kiri = tk.Frame(root, width=250, height=500)
+        self.frame_kiri = tk.Frame(root, width=350, height=400)
         self.frame_kiri.pack(side="left", fill="both", expand=False)
 
-        self.frame_kanan = tk.Frame(root, bg="white", width=500, height=500)
+        self.frame_kanan = tk.Frame(root, bg="white", width=350, height=400)
         self.frame_kanan.pack(side="right", fill="both", expand=True)
         
         self.label_judul = tk.Label(root, text="Testing How This Work", font=("Helvetica", 16))
         self.label_judul.pack(pady=10)
 
-        def tampilkan_gambar(self):
-        img = Image.open("Test.img")
+    def tampilkan_gambar(self):
+        img = Image.open("test.png")
         img = img.resize((200, 200))
         self.photo = ImageTk.PhotoImage(img)
         self.label_gambar = tk.Label(self.root, image=self.photo)
