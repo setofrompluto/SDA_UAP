@@ -12,7 +12,7 @@ class AplikasiTkinter:
         self.frame_awal = tk.Frame(root, bg="white")
         self.frame_awal.pack(fill="both", expand=True)
         
-        self.label_nama = tk.Label(self.frame_awal, text="Selamat Datang!",font=("Helvetica", 18), bg="white")
+        self.label_nama = tk.Label(self.frame_awal, text="Welcome!",font=("Helvetica", 18), bg="white")
         self.label_nama.pack(pady=50)
 
         self.btn_masuk = tk.Button(self.frame_awal, text="Masuk", font=("Helvetica", 14), command=self.buka_halaman_utama)
