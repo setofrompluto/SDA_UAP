@@ -9,17 +9,47 @@ class AplikasiTkinter:
         self.root.title("Aplikasi Tkinter Sederhana")
         self.root.geometry("400x400")
         self.root.resizable(False, False)
+
+        self.bg_image = Image.open("background.png").resize((800, 600))
+        self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
-        self.frame_awal = tk.Frame(root, bg="white")
+        self.frame_awal = tk.Frame(root, width=800, height=600)
         self.frame_awal.pack(fill="both", expand=True)
         
         self.label_nama = tk.Label(self.frame_awal, text="Welcome To Our Projeck!",font=("Courier New", 20, "bold"), bg="white")
         self.label_nama.pack(pady=100)
 
+        self.bg_label_awal = tk.Label(self.frame_awal, image=self.bg_photo)
+        self.bg_label_awal.place(x=0, y=0, relwidth=1, relheight=1)
+
         self.btn_masuk = tk.Button(self.frame_awal, text="Click To start", font=("Courier New", 14,"italic"), command=self.buka_halaman_utama)
         self.btn_masuk.pack()
 
+        self.frame_perkenalan = tk.Frame(root, width=800, height=600)
         self.frame_utama = tk.Frame(root)
+
+    def buka_halaman_perkenalan(self):
+        self.frame_awal.pack_forget()
+        self.frame_perkenalan.pack(fill="both", expand=True)
+
+        self.bg_label_perkenalan = tk.Label(self.frame_perkenalan, image=self.bg_photo)
+        self.bg_label_perkenalan.place(x=0, y=0, relwidth=1, relheight=1)
+
+        label_judul = tk.Label(self.frame_perkenalan, text="Kelompok 3 - Pemrograman Visual",
+                               font=("Helvetica", 20, "bold"), fg="black")
+        label_judul.place(relx=0.5, rely=0.15, anchor="center")
+
+        anggota = ["1. Ana Putri", "2. Budi Santoso", "3. Citra Lestari", "4. Dedi Pratama", "5. Ema Yuliana"]
+        for i, nama in enumerate(anggota):
+            label = tk.Label(self.frame_perkenalan, text=nama, font=("Courier New", 14), fg="black")
+            label.place(relx=0.5, rely=0.25 + i * 0.07, anchor="center")
+
+        btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama", font=("Courier New", 14, "italic"),
+                               bg="black", fg="white", activebackground="gray20",
+                               activeforeground="white", borderwidth=0,
+                               command=self.buka_halaman_utama)
+        btn_lanjut.place(relx=0.5, rely=0.75, anchor="center")
+
     
     def buka_halaman_utama(self):
         self.frame_awal.pack_forget()
