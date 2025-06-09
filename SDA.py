@@ -10,45 +10,55 @@ class AplikasiTkinter:
         self.root.geometry("400x400")
         self.root.resizable(False, False)
 
-        self.bg_image = Image.open("background.png").resize((800, 600))
+        self.bg_image = Image.open("background.png").resize((400, 400))
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
         
         self.frame_awal = tk.Frame(root, width=800, height=600)
         self.frame_awal.pack(fill="both", expand=True)
         
-        self.bg_label_awal = tk.Label(self.frame_awal, image=self.bg_photo)
-        self.bg_label_awal.place(x=0, y=0, relwidth=1, relheight=1)
-        
-        self.label_nama = tk.Label(self.frame_awal, text="Welcome To Our Projeck!",font=("Courier New", 20, "bold"), bg="white")
-        self.label_nama.pack(pady=100)
+        self.canvas_awal = tk.Canvas(self.frame_awal, width=400, height=400, highlightthickness=0)
+        self.canvas_awal.pack(fill="both", expand=True)
+        self.canvas_awal.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.btn_masuk = tk.Button(self.frame_awal, text="Click To start", font=("Courier New", 14,"italic"), command=self.buka_halaman_perkenalan)
-        self.btn_masuk.pack()
+        self.canvas_awal.create_text(200, 100, text="Welcome To Our Projeck!",
+                                     font=("Courier New", 20, "bold"), fill="white")
 
-        self.frame_perkenalan = tk.Frame(root, width=800, height=600)
+        self.btn_masuk = tk.Button(self.frame_awal, text="Click To Start",
+                                   font=("Courier New", 14, "italic"),
+                                   command=self.buka_halaman_perkenalan)
+        self.canvas_awal.create_window(200, 200, window=self.btn_masuk)
+
+        self.frame_perkenalan = tk.Frame(root, width=400, height=400)
         self.frame_utama = tk.Frame(root)
 
     def buka_halaman_perkenalan(self):
         self.frame_awal.pack_forget()
         self.frame_perkenalan.pack(fill="both", expand=True)
 
-        self.bg_label_perkenalan = tk.Label(self.frame_perkenalan, image=self.bg_photo)
-        self.bg_label_perkenalan.place(x=0, y=0, relwidth=1, relheight=1)
+self.canvas_perkenalan = tk.Canvas(self.frame_perkenalan, width=400, height=400, highlightthickness=0)
+        self.canvas_perkenalan.pack(fill="both", expand=True)
+        self.canvas_perkenalan.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        label_judul = tk.Label(self.frame_perkenalan, text="Kelompok 13 ",
-                               font=("Helvetica", 16, "bold"), fg="black")
-        label_judul.place(relx=0.5, rely=0.15, anchor="center")
+        self.canvas_perkenalan.create_text(200, 60, text="Kelompok 13",
+                                           font=("Helvetica", 16, "bold"), fill="white")
+        anggota = [
+            "1. Dimas Seto Aji - 2417051052",
+            "2. Yusuf Alif Bahari - 2417051043",
+            "3. Muhamad Arif - 2417051045",
+            "4. Chayyarra Igda - 2417051001"
+        ]
 
-        anggota = ["1. Dimas Seto Aji - 2417051052", "2. Yusuf Alif Bahari - 2417051043", "3. Muhamad Arif - 2417051045", "4. Chayyarra Igda - 2417051001"]
         for i, nama in enumerate(anggota):
-            label = tk.Label(self.frame_perkenalan, text=nama, font=("Courier New", 14), fg="black")
-            label.place(relx=0.5, rely=0.25 + i * 0.07, anchor="center")
+            y_pos = 100 + i * 30
+            self.canvas_perkenalan.create_text(200, y_pos, text=nama,
+                                               font=("Courier New", 13, "bold"), fill="white")
 
-        btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama", font=("Courier New", 14, "italic"),
-                               bg="black", fg="white", activebackground="gray20",
-                               activeforeground="white", borderwidth=0,
-                               command=self.buka_halaman_utama)
-        btn_lanjut.place(relx=0.5, rely=0.75, anchor="center")
+        self.btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama",
+                                    font=("Courier New", 14, "italic"),
+                                    bg="white", fg="black", activebackground="gray20",
+                                    activeforeground="white", borderwidth=0,
+                                    command=self.buka_halaman_utama)
+        self.canvas_perkenalan.create_window(200, 280, window=self.btn_lanjut)
 
     
     def buka_halaman_utama(self):
