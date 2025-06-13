@@ -35,7 +35,7 @@ class AplikasiTkinter:
         self.frame_awal.pack_forget()
         self.frame_perkenalan.pack(fill="both", expand=True)
 
-self.canvas_perkenalan = tk.Canvas(self.frame_perkenalan, width=400, height=400, highlightthickness=0)
+        self.canvas_perkenalan = tk.Canvas(self.frame_perkenalan, width=400, height=400, highlightthickness=0)
         self.canvas_perkenalan.pack(fill="both", expand=True)
         self.canvas_perkenalan.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
@@ -67,7 +67,7 @@ self.canvas_perkenalan = tk.Canvas(self.frame_perkenalan, width=400, height=400,
         self.root.state("zoomed")
         self.tampilkan_halaman_utama()
 
-        def tampilkan_halaman_utama(self):
+    def tampilkan_halaman_utama(self):
         self.frame_kiri = tk.Frame(root, bg="red",width=350, height=400)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
