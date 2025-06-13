@@ -10,17 +10,20 @@ class AplikasiTkinter:
         self.root.geometry("400x400")
         self.root.resizable(False, False)
 
-        self.bg_image = Image.open("background.png").resize((400, 400))
+        self.bg_image = Image.open("gi.png").resize((400, 400))
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
-        
+
+        self.flag_red = ImageTk.PhotoImage(Image.open("merah.jpg").resize((100, 60)))
+        self.flag_blue = ImageTk.PhotoImage(Image.open("biru.jpg").resize((100, 60)))
+
         self.frame_awal = tk.Frame(root, width=800, height=600)
         self.frame_awal.pack(fill="both", expand=True)
-        
+
         self.canvas_awal = tk.Canvas(self.frame_awal, width=400, height=400, highlightthickness=0)
         self.canvas_awal.pack(fill="both", expand=True)
         self.canvas_awal.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_awal.create_text(200, 100, text="Welcome To Our Projeck!",
+        self.canvas_awal.create_text(200, 100, text="Welcome To Our Project!",
                                      font=("Courier New", 20, "bold"), fill="white")
 
         self.btn_masuk = tk.Button(self.frame_awal, text="Click To Start",
@@ -60,7 +63,6 @@ class AplikasiTkinter:
                                     command=self.buka_halaman_utama)
         self.canvas_perkenalan.create_window(200, 280, window=self.btn_lanjut)
 
-    
     def buka_halaman_utama(self):
         self.frame_awal.pack_forget()
         self.frame_perkenalan.pack_forget()
@@ -68,33 +70,45 @@ class AplikasiTkinter:
         self.tampilkan_halaman_utama()
 
     def tampilkan_halaman_utama(self):
-        self.frame_kiri = tk.Frame(root, bg="red",width=350, height=400)
+        self.frame_kiri = tk.Frame(root, bg="red", width=350, height=400)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
+        # Bendera Merah
+        self.label_flag_merah = tk.Label(self.frame_kiri, image=self.flag_red, bg="red")
+        self.label_flag_merah.pack(pady=(20, 5))
+
         self.label_biru_skor = tk.Label(self.frame_kiri, text="0", font=("Arial", 80), bg="red", fg="white")
-        self.label_biru_skor.pack(pady=20)
-        
-        self.btn_biru_tambah = tk.Button(self.frame_kiri, text="+1", font=("Arial", 24), command=self.tambah_skor_biru)
-        self.btn_biru_tambah.pack(pady=10)
-        
-        self.btn_biru_kurang = tk.Button(self.frame_kiri, text="-1", font=("Arial", 24), command=self.kurang_skor_biru)
-        self.btn_biru_kurang.pack(pady=10)
+        self.label_biru_skor.pack(pady=(5, 20))
+
+        # Tombol
+        self.frame_btn_merah = tk.Frame(self.frame_kiri, bg="red")
+        self.frame_btn_merah.pack(pady=10)
+        self.btn_biru_tambah = tk.Button(self.frame_btn_merah, text="+1", font=("Arial", 24), command=self.tambah_skor_biru)
+        self.btn_biru_tambah.pack(side="left", padx=5)
+        self.btn_biru_kurang = tk.Button(self.frame_btn_merah, text="-1", font=("Arial", 24), command=self.kurang_skor_biru)
+        self.btn_biru_kurang.pack(side="left", padx=5)
 
         self.frame_kanan = tk.Frame(root, bg="blue", width=350, height=400)
         self.frame_kanan.pack(side="right", fill="both", expand=True)
-    
+
+        # Bendera Biru
+        self.label_flag_biru = tk.Label(self.frame_kanan, image=self.flag_blue, bg="blue")
+        self.label_flag_biru.pack(pady=(20, 5))
+
         self.label_merah_skor = tk.Label(self.frame_kanan, text="0", font=("Arial", 80), bg="blue", fg="white")
-        self.label_merah_skor.pack(pady=20)
-        
-        self.btn_merah_tambah = tk.Button(self.frame_kanan, text="+1", font=("Arial", 24), command=self.tambah_skor_merah)
-        self.btn_merah_tambah.pack(pady=10)
-        
-        self.btn_merah_kurang = tk.Button(self.frame_kanan, text="-1", font=("Arial", 24), command=self.kurang_skor_merah)
-        self.btn_merah_kurang.pack(pady=10)
-        
+        self.label_merah_skor.pack(pady=(5, 20))
+
+        # Tombol
+        self.frame_btn_biru = tk.Frame(self.frame_kanan, bg="blue")
+        self.frame_btn_biru.pack(pady=10)
+        self.btn_merah_tambah = tk.Button(self.frame_btn_biru, text="+1", font=("Arial", 24), command=self.tambah_skor_merah)
+        self.btn_merah_tambah.pack(side="left", padx=5)
+        self.btn_merah_kurang = tk.Button(self.frame_btn_biru, text="-1", font=("Arial", 24), command=self.kurang_skor_merah)
+        self.btn_merah_kurang.pack(side="left", padx=5)
+
         self.skor_biru = 0
         self.skor_merah = 0
-        
+
     def tambah_skor_biru(self):
         self.skor_biru += 1
         self.label_biru_skor.config(text=str(self.skor_biru))
@@ -110,18 +124,6 @@ class AplikasiTkinter:
     def kurang_skor_merah(self):
         self.skor_merah = max(0, self.skor_merah - 1)
         self.label_merah_skor.config(text=str(self.skor_merah))
-    
-    def buka_halaman_kedua(self):
-        self.frame_kiri.pack_forget()
-        self.frame_kanan.pack_forget()
-        self.tampilkan_halaman_kedua()
-    
-    def tampilkan_gambar(self):
-        img = Image.open("test.png")
-        img = img.resize((200, 200))
-        self.photo = ImageTk.PhotoImage(img)
-        self.label_gambar = tk.Label(self.root, image=self.photo)
-        self.label_gambar.pack(pady=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
