@@ -93,17 +93,37 @@ class AplikasiTkinter:
         self.tampilkan_halaman_utama()
 
     def tampilkan_halaman_utama(self):
-        self.frame_kiri = tk.Frame(root, bg="red", width=350, height=400)
+        self.frame_atas = tk.Frame(self.root, height=50, bg="gray20")
+        self.frame_atas.pack(side="top", fill="x")
+
+        self.label_nama_merah = tk.Label(self.frame_atas, text="Tim Merah", font=("Arial", 14), fg="white", bg="gray20")
+        self.label_nama_merah.pack(side="left", padx=20)
+
+        self.timer_label = tk.Label(
+            self.frame_atas,
+            text="00:00",
+            font=("Arial", 28, "bold"),
+            fg="white",
+            bg="gray20",
+            width=10,
+            height=2,
+            relief="ridge",
+            bd=3
+        )
+        self.timer_label.place(relx=0.5, rely=0.5, anchor="center")
+
+        self.label_nama_biru = tk.Label(self.frame_atas, text="Tim Biru", font=("Arial", 14), fg="white", bg="gray20")
+        self.label_nama_biru.pack(side="right", padx=20)
+
+        self.frame_kiri = tk.Frame(self.root, bg="red", width=350, height=400)
         self.frame_kiri.pack(side="left", fill="both", expand=True)
 
-        # Bendera Merah
         self.label_flag_merah = tk.Label(self.frame_kiri, image=self.flag_red, bg="red")
         self.label_flag_merah.pack(pady=(20, 5))
 
-        self.label_biru_skor = tk.Label(self.frame_kiri, text="0", font=("Arial", 80), bg="red", fg="white")
+        self.label_biru_skor = tk.Label(self.frame_kiri, text="0", font=("DS-Digital", 160), bg="red", fg="white")
         self.label_biru_skor.pack(pady=(5, 20))
 
-        # Tombol
         self.frame_btn_merah = tk.Frame(self.frame_kiri, bg="red")
         self.frame_btn_merah.pack(pady=10)
         self.btn_biru_tambah = tk.Button(self.frame_btn_merah, text="+1", font=("Arial", 24), command=self.tambah_skor_biru)
@@ -111,17 +131,15 @@ class AplikasiTkinter:
         self.btn_biru_kurang = tk.Button(self.frame_btn_merah, text="-1", font=("Arial", 24), command=self.kurang_skor_biru)
         self.btn_biru_kurang.pack(side="left", padx=5)
 
-        self.frame_kanan = tk.Frame(root, bg="blue", width=350, height=400)
+        self.frame_kanan = tk.Frame(self.root, bg="blue", width=350, height=400)
         self.frame_kanan.pack(side="right", fill="both", expand=True)
 
-        # Bendera Biru
         self.label_flag_biru = tk.Label(self.frame_kanan, image=self.flag_blue, bg="blue")
         self.label_flag_biru.pack(pady=(20, 5))
 
-        self.label_merah_skor = tk.Label(self.frame_kanan, text="0", font=("Arial", 80), bg="blue", fg="white")
+        self.label_merah_skor = tk.Label(self.frame_kanan, text="0", font=("DS-Digital", 160), bg="blue", fg="white")
         self.label_merah_skor.pack(pady=(5, 20))
 
-        # Tombol
         self.frame_btn_biru = tk.Frame(self.frame_kanan, bg="blue")
         self.frame_btn_biru.pack(pady=10)
         self.btn_merah_tambah = tk.Button(self.frame_btn_biru, text="+1", font=("Arial", 24), command=self.tambah_skor_merah)
