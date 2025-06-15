@@ -29,7 +29,7 @@ class AplikasiTkinter:
         self.canvas_awal.pack(fill="both", expand=True)
         self.canvas_awal.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_awal.create_text(480, 200, text="Welcome To Our Project!",
+        self.canvas_awal.create_text(470, 200, text="Welcome To Our Project!",
                                      font=("Courier New", 30, "bold"), fill="white")
 
         self.btn_masuk = tk.Button(self.frame_awal, text="Click To Start",
@@ -48,26 +48,43 @@ class AplikasiTkinter:
         self.canvas_perkenalan.pack(fill="both", expand=True)
         self.canvas_perkenalan.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_perkenalan.create_text(470, 150, text="Kelompok 13",
+        self.canvas_perkenalan.create_text(470, 130, text="Kelompok 13",
                                            font=("Helvetica", 25, "bold"), fill="white")
-        anggota = [
-            "1. Dimas Seto Aji - 2417051052",
-            "2. Yusuf Alif Bahari - 2417051043",
-            "3. Muhamad Arif - 2417051045",
-            "4. Chayyarra Igda - 2417051001"
+        foto_paths = ["seto.png", "yusuf.png", "arif.png", "chay.png"]
+        nama_anggota = [
+            "Dimas Seto Aji\n2417051052",
+            "Yusuf Alif Bahari\n2417051043",
+            "Muhamad Arif\n2417051045",
+            "Chayyarra Igda\n2417051001"
         ]
 
-        for i, nama in enumerate(anggota):
-            y_pos = 250 + i * 50
-            self.canvas_perkenalan.create_text(460, y_pos, text=nama,
-                                               font=("Courier New", 20, "bold"), fill="white")
+        self.foto_anggota = []  # simpan referensi gambar
+        start_x = 110
+        spacing = 230
+        y_foto = 300
+        y_nama = 400
 
+        for i in range(4):
+            try:
+                img = Image.open(foto_paths[i]).resize((100, 100))
+            except:
+                img = Image.new("RGB", (100, 100), color="gray")  # placeholder jika file tidak ditemukan
+
+            img_tk = ImageTk.PhotoImage(img)
+            self.foto_anggota.append(img_tk)
+
+            x_pos = start_x + i * spacing
+            self.canvas_perkenalan.create_image(x_pos, y_foto, image=img_tk)
+            self.canvas_perkenalan.create_text(x_pos, y_nama, text=nama_anggota[i],
+                                               font=("Courier New", 14, "bold"), fill="white")
+
+        
         self.btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama",
                                     font=("Courier New", 20, "italic"),
                                     bg="white", fg="black", activebackground="gray20",
                                     activeforeground="white", borderwidth=0,
                                     command=self.buka_halaman_utama)
-        self.canvas_perkenalan.create_window(470, 500, window=self.btn_lanjut)
+        self.canvas_perkenalan.create_window(470, 550, window=self.btn_lanjut)
 
     def buka_halaman_utama(self):
         self.frame_awal.pack_forget()
