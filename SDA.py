@@ -9,33 +9,33 @@ class AplikasiTkinter:
         self.root.title("Aplikasi Tkinter Sederhana")
         self.lebar = root.winfo_screenwidth()
         self.tinggi = root.winfo_screenheight()
-        self.lebar_layar = 400
-        self.tinggi_layar = 400
+        self.lebar_layar = 940
+        self.tinggi_layar = 788
         pos_x = (self.lebar - self.lebar_layar) // 2
         pos_y = (self.tinggi - self.tinggi_layar) // 2
         self.root.geometry(f"{self.lebar_layar}x{self.tinggi_layar}+{pos_x}+{pos_y}")
         self.root.resizable(False, False)
 
-        self.bg_image = Image.open("gi.png").resize((400, 400))
+        self.bg_image = Image.open("gi.png").resize((940, 788))
         self.bg_photo = ImageTk.PhotoImage(self.bg_image)
 
         self.flag_red = ImageTk.PhotoImage(Image.open("merah.jpg").resize((100, 60)))
         self.flag_blue = ImageTk.PhotoImage(Image.open("biru.jpg").resize((100, 60)))
 
-        self.frame_awal = tk.Frame(root, width=800, height=600)
+        self.frame_awal = tk.Frame(root, width=400, height=400)
         self.frame_awal.pack(fill="both", expand=True)
 
-        self.canvas_awal = tk.Canvas(self.frame_awal, width=400, height=400, highlightthickness=0)
+        self.canvas_awal = tk.Canvas(self.frame_awal, width=940, height=788, highlightthickness=0)
         self.canvas_awal.pack(fill="both", expand=True)
         self.canvas_awal.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_awal.create_text(200, 100, text="Welcome To Our Project!",
-                                     font=("Courier New", 20, "bold"), fill="white")
+        self.canvas_awal.create_text(500, 200, text="Welcome To Our Project!",
+                                     font=("Courier New", 30, "bold"), fill="white")
 
         self.btn_masuk = tk.Button(self.frame_awal, text="Click To Start",
-                                   font=("Courier New", 14, "italic"),
+                                   font=("Courier New", 19, "italic"),
                                    command=self.buka_halaman_perkenalan)
-        self.canvas_awal.create_window(200, 200, window=self.btn_masuk)
+        self.canvas_awal.create_window(500, 500, window=self.btn_masuk)
 
         self.frame_perkenalan = tk.Frame(root, width=400, height=400)
         self.frame_utama = tk.Frame(root)
@@ -48,8 +48,8 @@ class AplikasiTkinter:
         self.canvas_perkenalan.pack(fill="both", expand=True)
         self.canvas_perkenalan.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_perkenalan.create_text(200, 60, text="Kelompok 13",
-                                           font=("Helvetica", 16, "bold"), fill="white")
+        self.canvas_perkenalan.create_text(500, 150, text="Kelompok 13",
+                                           font=("Helvetica", 25, "bold"), fill="white")
         anggota = [
             "1. Dimas Seto Aji - 2417051052",
             "2. Yusuf Alif Bahari - 2417051043",
@@ -58,16 +58,16 @@ class AplikasiTkinter:
         ]
 
         for i, nama in enumerate(anggota):
-            y_pos = 100 + i * 30
-            self.canvas_perkenalan.create_text(200, y_pos, text=nama,
-                                               font=("Courier New", 13, "bold"), fill="white")
+            y_pos = 250 + i * 50
+            self.canvas_perkenalan.create_text(500, y_pos, text=nama,
+                                               font=("Courier New", 20, "bold"), fill="white")
 
         self.btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama",
-                                    font=("Courier New", 14, "italic"),
+                                    font=("Courier New", 20, "italic"),
                                     bg="white", fg="black", activebackground="gray20",
                                     activeforeground="white", borderwidth=0,
                                     command=self.buka_halaman_utama)
-        self.canvas_perkenalan.create_window(200, 280, window=self.btn_lanjut)
+        self.canvas_perkenalan.create_window(500, 500, window=self.btn_lanjut)
 
     def buka_halaman_utama(self):
         self.frame_awal.pack_forget()
