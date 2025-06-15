@@ -1,1 +1,3 @@
-# SDA_UAP
+Kami membuat aplikasi tkinter dari python berupa program penghitung skor pada sebuah permainan. Pada tampilan awal, menampilkan layar ucapan selamat datang dan juga perkenalan terhadap kelompok. Lalu, tampilan berikutnya menunjukan tampilan penghitung skor permainan antara dua tim. di layar tersebut terdapat gambar bendera dua tim yang bermusuhan, jam yang menunjukan real time pada bagian atas, ada tombol untuk menambah dan mengurangi skor, juga terdapat tombol save skor ke csv dan reset skor yang akan mereset skor yang ada di csv menjadi nol, dibagian atas terdapat dropdown untuk memilih tim yang akan merubah background dan bendera untuk tim yang dipilih.
+
+Thank youuu^^
