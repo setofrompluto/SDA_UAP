@@ -7,7 +7,13 @@ class AplikasiTkinter:
     def __init__(self, root):
         self.root = root
         self.root.title("Aplikasi Tkinter Sederhana")
-        self.root.geometry("400x400")
+        self.lebar = root.winfo_screenwidth()
+        self.tinggi = root.winfo_screenheight()
+        self.lebar_layar = 400
+        self.tinggi_layar = 400
+        pos_x = (self.lebar - self.lebar_layar) // 2
+        pos_y = (self.tinggi - self.tinggi_layar) // 2
+        self.root.geometry(f"{self.lebar_layar}x{self.tinggi_layar}+{pos_x}+{pos_y}")
         self.root.resizable(False, False)
 
         self.bg_image = Image.open("gi.png").resize((400, 400))
