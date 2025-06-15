@@ -29,13 +29,13 @@ class AplikasiTkinter:
         self.canvas_awal.pack(fill="both", expand=True)
         self.canvas_awal.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_awal.create_text(500, 200, text="Welcome To Our Project!",
+        self.canvas_awal.create_text(480, 200, text="Welcome To Our Project!",
                                      font=("Courier New", 30, "bold"), fill="white")
 
         self.btn_masuk = tk.Button(self.frame_awal, text="Click To Start",
                                    font=("Courier New", 19, "italic"),
                                    command=self.buka_halaman_perkenalan)
-        self.canvas_awal.create_window(500, 500, window=self.btn_masuk)
+        self.canvas_awal.create_window(470, 500, window=self.btn_masuk)
 
         self.frame_perkenalan = tk.Frame(root, width=400, height=400)
         self.frame_utama = tk.Frame(root)
@@ -48,7 +48,7 @@ class AplikasiTkinter:
         self.canvas_perkenalan.pack(fill="both", expand=True)
         self.canvas_perkenalan.create_image(0, 0, anchor="nw", image=self.bg_photo)
 
-        self.canvas_perkenalan.create_text(500, 150, text="Kelompok 13",
+        self.canvas_perkenalan.create_text(470, 150, text="Kelompok 13",
                                            font=("Helvetica", 25, "bold"), fill="white")
         anggota = [
             "1. Dimas Seto Aji - 2417051052",
@@ -59,7 +59,7 @@ class AplikasiTkinter:
 
         for i, nama in enumerate(anggota):
             y_pos = 250 + i * 50
-            self.canvas_perkenalan.create_text(500, y_pos, text=nama,
+            self.canvas_perkenalan.create_text(460, y_pos, text=nama,
                                                font=("Courier New", 20, "bold"), fill="white")
 
         self.btn_lanjut = tk.Button(self.frame_perkenalan, text="Masuk ke Menu Utama",
@@ -67,7 +67,7 @@ class AplikasiTkinter:
                                     bg="white", fg="black", activebackground="gray20",
                                     activeforeground="white", borderwidth=0,
                                     command=self.buka_halaman_utama)
-        self.canvas_perkenalan.create_window(500, 500, window=self.btn_lanjut)
+        self.canvas_perkenalan.create_window(470, 500, window=self.btn_lanjut)
 
     def buka_halaman_utama(self):
         self.frame_awal.pack_forget()
